@@ -1,18 +1,11 @@
 #include <stddef.h>
 #include <assert.h>
 #include <stdio.h>
-#include <string.h>
-#include <intrin.h>
 
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 
 #define null nullptr
-
-#define ArrayLength(array) (sizeof(array) / sizeof(*(array)))
-
-#define CSTR_LEN(cstr)  (ArrayLength(cstr) - 1)
-#define CSTR_ARGS(cstr) cstr, CSTR_LEN(cstr)
 
 #define KB(x) ((x) << 10)
 #define MB(x) ((x) << 20)
@@ -23,23 +16,10 @@
 
 static_assert(sizeof(int) == sizeof(long));
 
-using s8  = signed char;
-using s16 = signed short;
-using s32 = signed long;
-using s64 = signed long long;
-
-using u8  = unsigned char;
-using u16 = unsigned short;
-using u32 = unsigned long;
-using u64 = unsigned long long;
-
-using f32 = float;
-using f64 = double;
-
+using u32  = unsigned long;
+using u64  = unsigned long long;
+using f64  = double;
 using byte = unsigned char;
-
-#define U16_MAX 0xFFFF
-#define U32_MAX 0xFFFF'FFFF
 
 #pragma warning(push)
 #pragma warning(disable: 4200)
@@ -439,7 +419,6 @@ int main(int args_count, const char **args)
     {
         printf("My over Win32 UTF8  to ASCII string conversion average speed is decreased by %lf%%\n", win32_utf8_to_ascii_average / my_utf8_to_ascii_average * 100.0);
     }
-
     #pragma endregion
 
     Arena_Destroy();
